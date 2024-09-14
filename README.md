@@ -35,9 +35,9 @@ Before you begin, make sure you have the following installed on your local machi
 
 2. Navigate to the project directory:
 
-  ```
-  cd To_do_list
-  ```
+   ```
+   cd To_do_list
+   ```
 
 3. Install the required dependencies:
 
