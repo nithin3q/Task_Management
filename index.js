@@ -38,3 +38,17 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Server started at port: ${PORT}`);
 });
+
+// Self-ping code to keep the server alive with error handling because i'm using free server
+setInterval(() => {
+    console.log('Initiating ping to keep the server alive...'); // Log interval trigger
+    try {
+      https.get('https://task-management-f7db.onrender.com', (res) => {
+        console.log(`Ping successful: Status Code ${res.statusCode}`); // Log success status
+      }).on('error', (error) => {
+        console.error(`Error pinging server: ${error.message}`); // Log errors if any
+      });
+    } catch (error) {
+      console.error(`Unexpected error during ping: ${error.message}`); // Catch unexpected errors
+    }
+  }, 1 * 60 * 1000); // Ping every minute
