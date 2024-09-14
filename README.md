@@ -30,7 +30,7 @@ Before you begin, make sure you have the following installed on your local machi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/nithin3q/Task_Management.git
+   git clone https://github.com/nithin3q/To_do_list.git
    ```
 2. Install the required dependencies:
 
