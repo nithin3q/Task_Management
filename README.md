@@ -2,6 +2,10 @@
 
 This is a simple To-Do List application built using **Node.js**, **Express**, and **MongoDB**. The application allows users to create, view, edit, and delete tasks, as well as mark tasks as completed.
 
+## Depoyed Server Link
+
+[link](https://task-management-nithin.onrender.com)
+
 ## Features
 
 - **Create Tasks**: Add new tasks with a title and description.
