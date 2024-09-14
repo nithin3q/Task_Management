@@ -32,12 +32,19 @@ Before you begin, make sure you have the following installed on your local machi
    ```bash
    git clone https://github.com/nithin3q/To_do_list.git
    ```
-2. Install the required dependencies:
+
+2. Navigate to the project directory:
+
+  ```
+  To_do_list
+  ```
+
+3. Install the required dependencies:
 
    ```
    npm install
    ```
-3. Start the server:
+4. Start the server:
 
    ```
    npm start
