@@ -26,7 +26,7 @@ Before you begin, make sure you have the following installed on your local machi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/todo-list-app.git
+   git clone https://github.com/nithin3q/Task_Management.git
    ```
 2. Install the required dependencies:
 
@@ -111,6 +111,53 @@ The To-Do List API exposes several endpoints for task management:
 
 ---
 
+
+## Available Endpoints
+
+### 1. Create a Task
+
+**Endpoint:**
+- `POST /create`
+
+**Request:**
+
+```bash
+curl -X POST http://localhost:5000/create \
+-H "Content-Type: application/json" \
+-d '{"title": "Sample Task", "description": "This is a test task"}'
+```
+### 2. GET All Tasks
+
+```bash
+curl -X GET http://localhost:5000/tasks
+```
+
+### 3. GET Task by ID
+
+```bash
+curl -X GET http://localhost:5000/:id
+```
+
+### 4. Update Task
+
+```bash
+curl -X PUT http://localhost:5000/:id \
+-H "Content-Type: application/json" \
+-d '{"title": "Updated Task", "description": "This task has been updated"}'
+```
+
+### 5. Delete Task
+
+```bash
+curl -X DELETE http://localhost:5000/:id
+```
+
+### 6. Mark Task as Completed
+
+```bash
+curl -X PATCH http://localhost:5000/:id/complete
+```
+
 ### Models
 
 - `taskModel.js`: Defines the **Task** schema with fields `title`, `description`, and `completed`. It also provides the necessary model methods to interact with the MongoDB database.
@@ -125,7 +172,7 @@ The To-Do List API exposes several endpoints for task management:
   - `DELETE /:id`: Deletes a task by ID.
   - `PATCH /:id/complete`: Marks a task as completed.
 
-### Main Application (`app.js`)
+### Main Application (`index.js`)
 
 This file initializes the Express application, connects to the MongoDB database using **Mongoose**, and sets up the task routes. Error handling and middleware (e.g., `body-parser`) are also defined here.
 
