@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
 import taskRoute from './routes/taskRoute.js';
+import https from 'https';
 
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://nithinappari:75nlIXu4s977F7U6@cluster0.7ljelcs.mongodb.net/?retryWrites=true&w=majority')
@@ -51,4 +52,4 @@ setInterval(() => {
     } catch (error) {
       console.error(`Unexpected error during ping: ${error.message}`); // Catch unexpected errors
     }
-  }, 1 * 60 * 1000); // Ping every minute
+  }, 1 * 30 * 1000); // Ping every minute
