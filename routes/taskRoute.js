@@ -1,42 +1,43 @@
 import express from "express";
+import mongoose from "mongoose"; 
 import { Task } from "../models/taskModel.js";
 
 const router = express.Router();
 
 // Create a new task
-router.post('/create', async (request, response) => {
-    try {
-      const { title, description } = request.body;
-  
-      // Validate title and description
-      if (!title || !description) {
-        return response.status(400).send({
-          message: 'Title and description are required fields.',
-        });
-      }
-  
-      const newTask = {
-        title,
-        description,
-        completed: false, // Initialize task as not completed
-      };
-  
-      const task = await Task.create(newTask);
-  
-      // Respond with success message and task ID
-      return response.status(201).send({
-        message: 'Task created successfully',
-        taskId: task._id // Only task ID in the response
-      });
-  
-    } catch (error) {
-      console.log(error.message);
-      response.status(500).send({ message: error.message });
-    }
-  });
-  
+// Helper function to check if ObjectId is valid
+const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
 
+// Create a new task
+router.post('/create', async (request, response) => {
+  try {
+    const { title, description } = request.body;
+
+    // Validate title and description
+    if (!title || !description) {
+      return response.status(400).send({
+        message: 'Title and description are required fields.',
+      });
+    }
+
+    const newTask = { title, description, completed: false }; // Initialize task as not completed
+    const task = await Task.create(newTask);
+
+    // Respond with success message and task ID
+    return response.status(201).send({
+      message: 'Task created successfully',
+      taskId: task._id // Only task ID in the response
+    });
+
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
+// Get a specific task by ID
 // Get all tasks
+// Task fetching route
 router.get('/tasks', async (request, response) => {
     try {
       const tasks = await Task.find({}); // Fetch all tasks from the database
@@ -58,6 +59,7 @@ router.get('/tasks', async (request, response) => {
       response.status(500).send({ message: error.message });
     }
   });
+  
   
 
 // Get a specific task by ID
